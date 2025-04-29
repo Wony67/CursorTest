@@ -1,0 +1,249 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #f5f7fa;
+    padding: 30px;
+    color: #2c3e50;
+}
+
+.container {
+    display: flex;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.calendar-container {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    flex: 2;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.calendar-header h2 {
+    font-size: 1.5em;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.calendar-header button {
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    padding: 8px 12px;
+    color: #7f8c8d;
+    transition: all 0.2s ease;
+    border-radius: 8px;
+}
+
+.calendar-header button:hover {
+    color: #2c3e50;
+    background-color: #f5f7fa;
+}
+
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #7f8c8d;
+}
+
+#calendarDays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+}
+
+.calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+    position: relative;
+    padding: 5px;
+    border: 2px solid transparent;
+}
+
+.calendar-day:hover {
+    background-color: #f5f7fa;
+    transform: translateY(-2px);
+}
+
+.calendar-day.selected {
+    background-color: #e3f2fd;
+    color: #1976d2;
+    font-weight: 600;
+}
+
+.calendar-day.today {
+    border-color: #1976d2;
+    color: #1976d2;
+    font-weight: 600;
+}
+
+.calendar-day .day-number {
+    font-size: 1.1em;
+    margin-bottom: 4px;
+}
+
+.calendar-day .memo-count {
+    font-size: 0.75em;
+    background-color: #4caf50;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    min-width: 22px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.memo-container {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.memo-container h3 {
+    color: #2c3e50;
+    font-size: 1.3em;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+#selectedDate {
+    margin: 10px 0;
+    font-weight: 500;
+    color: #7f8c8d;
+    font-size: 0.95em;
+}
+
+.memo-list {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    max-height: 300px;
+    padding-right: 5px;
+}
+
+.memo-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.memo-list::-webkit-scrollbar-track {
+    background: #f5f7fa;
+    border-radius: 3px;
+}
+
+.memo-list::-webkit-scrollbar-thumb {
+    background: #cbd5e0;
+    border-radius: 3px;
+}
+
+.memo-item {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 12px;
+    position: relative;
+    transition: all 0.2s ease;
+    border: 1px solid #edf2f7;
+}
+
+.memo-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.memo-item .memo-content {
+    margin-bottom: 8px;
+    word-break: break-all;
+    line-height: 1.5;
+    color: #2c3e50;
+}
+
+.memo-item .memo-time {
+    font-size: 0.8em;
+    color: #7f8c8d;
+}
+
+.memo-item .delete-memo {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: none;
+    border: none;
+    color: #e74c3c;
+    cursor: pointer;
+    font-size: 1.2em;
+    padding: 0 5px;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.memo-item .delete-memo:hover {
+    opacity: 1;
+}
+
+.memo-input {
+    margin-top: auto;
+}
+
+#memoText {
+    width: 100%;
+    height: 100px;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    resize: none;
+    font-family: inherit;
+    font-size: 0.95em;
+    transition: border-color 0.2s ease;
+}
+
+#memoText:focus {
+    outline: none;
+    border-color: #1976d2;
+}
+
+#saveMemo {
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1em;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+#saveMemo:hover {
+    background-color: #1565c0;
+    transform: translateY(-1px);
+} 
